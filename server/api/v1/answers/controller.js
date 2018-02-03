@@ -8,7 +8,7 @@ exports.find = (req, res, next, id) => {
                 next();
             }else{
                 res.json({
-                    message: "Document not found"
+                    message: "Answer not found"
                 });
             }
         })
@@ -25,6 +25,8 @@ exports.all = (req, res, next) => {
         .find()
         .skip(skip)
         .limit(limit)
+        .sort({createdAt:-1})
+        .populate('author');
     
     const count = Model.count();
     

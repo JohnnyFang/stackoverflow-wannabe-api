@@ -39,7 +39,7 @@ exports.profile = (req, res, next) => {
                res.json(doc);
             }else{
                 res.status(404).json({
-                    message: "Document not found"
+                    message: "User not found"
                 });
             }
         })
@@ -82,7 +82,7 @@ exports.login = (req, res, next) => {
                 });
             }else{
                 res.status(404).json({
-                    message: "Document not found"
+                    message: "User not found"
                 });
             }
         })

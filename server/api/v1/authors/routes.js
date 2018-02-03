@@ -3,11 +3,11 @@ const router = express.Router();
 const controller = require('./controller');
 
 /*
- * /api/answers/     GET    - READ ALL
- * /api/answers/     POST   - CREATE
- * /api/answers/:id  GET    - READ ONE
- * /api/answers/:id  PUT    - UPDATE
- * /api/answers/:id  DELETE - DELETE
+ * /api/authors/     GET    - READ ALL
+ * /api/authors/     POST   - CREATE
+ * /api/authors/:id  GET    - READ ONE
+ * /api/authors/:id  PUT    - UPDATE
+ * /api/authors/:id  DELETE - DELETE
  */
 
 router.route('/')

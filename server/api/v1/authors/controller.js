@@ -7,8 +7,8 @@ exports.find = (req, res, next, id) => {
                 req.doc = doc;
                 next();
             }else{
-                res.status(404).json({
-                    message: "Question not found"
+                res.json({
+                    message: "Author not found"
                 });
             }
         })
@@ -25,8 +25,6 @@ exports.all = (req, res, next) => {
         .find()
         .skip(skip)
         .limit(limit)
-        .sort({createdAt:-1})
-        .populate('author');
     
     const count = Model.count();
     
@@ -47,10 +45,7 @@ exports.all = (req, res, next) => {
 exports.create = (req, res, next) => {
     const body = req.body;
     
-    let document = new Model({
-        text: body.text,
-        author: req.decoded._id
-    });
+    let document = new Model(body);
     document.save()
         .then( doc => {
             res.json(doc)
@@ -59,48 +54,6 @@ exports.create = (req, res, next) => {
             next(new Error(err));
         });
 };
-
-/**
- * @api {get} /questions/:id Request Book information
- * @apiName GetQuestion
- * @apiGroup Question
- *
- * @apiParam {String} id Book unique ID.
- *
- * @apiSuccess {String} _id         unique ID of the Book.
- * @apiSuccess {String} text        Title.
- * @apiSuccess {String} description Description.
- * @apiSuccess {String} author      Author of the book.
- * @apiSuccess {String} createdAt   Created date of the book.
- * @apiSuccess {String} updateAt    Last update date of the book.
- *
- * @apiSuccessExample Success-Response:
- *     HTTP/1.1 200 OK
- *     {
- *          "_id": "5a63985872e840361145d634",
- *          "title": "Go girl",
- *          "description": "Originally writed by Gillian Flynn",
- *          "author": {
- *              "_id": "5a63929672e840361145d633",
- *              "firstname": "Gustavo",
- *              "lastname": "Morales",
- *              "createdAt": "2018-01-20T19:03:50.638Z",
- *              "updatedAt": "2018-01-20T19:03:50.638Z",
- *              "__v": 0
- *          },
- *          "createdAt": "2018-01-20T19:28:24.046Z",
- *          "updatedAt": "2018-01-20T19:28:24.046Z",
- *          "__v": 0
- *      },
- *
- * @apiError Document Not Found the id of the Book was not found.
- *
- * @apiErrorExample Error-Response:
- *     HTTP/1.1 404 Not Found
- *     {
- *       "error": "Document Not Found"
- *     }
- */
 
 exports.get = (req, res, next) => {
     res.json(req.doc);
