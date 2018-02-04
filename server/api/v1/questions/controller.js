@@ -61,29 +61,28 @@ exports.create = (req, res, next) => {
 };
 
 /**
- * @api {get} /questions/:id Request Book information
+ * @api {get} /questions/:id Request Question information
  * @apiName GetQuestion
  * @apiGroup Question
  *
- * @apiParam {String} id Book unique ID.
+ * @apiParam {String} id Question unique ID.
  *
- * @apiSuccess {String} _id         unique ID of the Book.
- * @apiSuccess {String} text        Title.
- * @apiSuccess {String} description Description.
- * @apiSuccess {String} author      Author of the book.
- * @apiSuccess {String} createdAt   Created date of the book.
- * @apiSuccess {String} updateAt    Last update date of the book.
+ * @apiSuccess {String} _id         unique ID of the question.
+ * @apiSuccess {String} text        Text of the question.
+ * @apiSuccess {String} author      Author of the question.
+ * @apiSuccess {String} createdAt   Created date of the question.
+ * @apiSuccess {String} updateAt    Last update date of the question.
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
  *          "_id": "5a63985872e840361145d634",
- *          "title": "Go girl",
- *          "description": "Originally writed by Gillian Flynn",
+ *          "text": "Why the sky is blue?",
  *          "author": {
  *              "_id": "5a63929672e840361145d633",
- *              "firstname": "Gustavo",
- *              "lastname": "Morales",
+ *              "firstname": "Ornella",
+ *              "lastname": "Ramos",
+ *              "email": "ornellar@uninorte.edu.co",
  *              "createdAt": "2018-01-20T19:03:50.638Z",
  *              "updatedAt": "2018-01-20T19:03:50.638Z",
  *              "__v": 0
@@ -93,7 +92,7 @@ exports.create = (req, res, next) => {
  *          "__v": 0
  *      },
  *
- * @apiError Document Not Found the id of the Book was not found.
+ * @apiError Document Not Found the id of the Question was not found.
  *
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 404 Not Found

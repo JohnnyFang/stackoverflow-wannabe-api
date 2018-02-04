@@ -55,6 +55,39 @@ exports.create = (req, res, next) => {
         });
 };
 
+/**
+ * @api {get} /authors/:id Request Author information
+ * @apiName GetAuthor
+ * @apiGroup Author
+ *
+ * @apiParam {String} id Author unique ID.
+ *
+ * @apiSuccess {String} _id             unique ID of the author.
+ * @apiSuccess {String} firstname       First name of the author.
+ * @apiSuccess {String} lastname        Last name of the author.
+ * @apiSuccess {String} createdAt       Created date of the author.
+ * @apiSuccess {String} updateAt        Last update date of the author.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "_id": "5a63929672e840361145d633",
+ *          "firstname": "Ornella",
+ *          "lastname": "Ramos",
+ *          "createdAt": "2018-01-20T19:03:50.638Z",
+ *          "updatedAt": "2018-01-20T19:03:50.638Z",
+ *          "__v": 0
+ *      },
+ *
+ * @apiError Document Not Found the id of the Author was not found.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "error": "Document Not Found"
+ *     }
+ */
+
 exports.get = (req, res, next) => {
     res.json(req.doc);
 };

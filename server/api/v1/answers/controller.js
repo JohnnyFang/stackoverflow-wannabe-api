@@ -8,7 +8,7 @@ exports.find = (req, res, next, id) => {
                 next();
             }else{
                 res.json({
-                    message: "Answer not found"
+                    message: "Document not found"
                 });
             }
         })
@@ -56,6 +56,64 @@ exports.create = (req, res, next) => {
             next(new Error(err));
         });
 };
+
+/**
+ * @api {get} /answers/:id Request Answer information
+ * @apiName GetAnswer
+ * @apiGroup Answer
+ *
+ * @apiParam {String} id Answer unique ID.
+ *
+ * @apiSuccess {String} _id             unique ID of the answer.
+ * @apiSuccess {String} text            Text of the answer.
+ * @apiSuccess {String} author          Author of the answer.
+ * @apiSuccess {String} question        Question of the answer.
+ * @apiSuccess {String} createdAt       Created date of the answer.
+ * @apiSuccess {String} updateAt        Last update date of the answer.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *          "_id": "5a63929672e840361145d633",
+ *          "text": "Silly questions dont deserve an answer",
+ *          "author": {
+ *              "_id": "5a63929672e840361145d633",
+ *              "firstname": "Ornella",
+ *              "lastname": "Ramos",
+ *              "email": "ornellar@uninorte.edu.co",
+ *              "createdAt": "2018-01-20T19:03:50.638Z",
+ *              "updatedAt": "2018-01-20T19:03:50.638Z",
+ *              "__v": 0
+ *          },
+ *          "question": {
+ *          "_id": "5a63985872e840361145d634",
+ *          "text": "Why the sky is blue?",
+ *          "author": {
+ *              "_id": "5a63929672e840361145d633",
+ *              "firstname": "Ornella",
+ *              "lastname": "Ramos",
+ *              "email": "ornellar@uninorte.edu.co",
+ *              "createdAt": "2018-01-20T19:03:50.638Z",
+ *              "updatedAt": "2018-01-20T19:03:50.638Z",
+ *              "__v": 0
+ *          },
+ *          "createdAt": "2018-01-20T19:28:24.046Z",
+ *          "updatedAt": "2018-01-20T19:28:24.046Z",
+ *          "__v": 0
+ *          },
+ *          "createdAt": "2018-01-20T19:03:50.638Z",
+ *          "updatedAt": "2018-01-20T19:03:50.638Z",
+ *          "__v": 0
+ *      },
+ *
+ * @apiError Document Not Found the id of the answer was not found.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "error": "Document Not Found"
+ *     }
+ */
 
 exports.get = (req, res, next) => {
     res.json(req.doc);
