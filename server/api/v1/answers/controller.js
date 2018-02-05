@@ -7,11 +7,7 @@ exports.find = (req, res, next, id) => {
                 req.doc = doc;
                 next();
             }else{
-<<<<<<< HEAD
                 res.status(404).json({
-=======
-                res.json({
->>>>>>> e18e9024219bbb149249323400a8fed4d4f0b364
                     message: "Document not found"
                 });
             }
@@ -30,13 +26,8 @@ exports.all = (req, res, next) => {
         .skip(skip)
         .limit(limit)
         .sort({createdAt:-1})
-<<<<<<< HEAD
         .populate('author')
         .populate('question');
-=======
-        .populate('question')
-        .populate('user');
->>>>>>> e18e9024219bbb149249323400a8fed4d4f0b364
     
     const count = Model.count();
     
@@ -87,7 +78,6 @@ exports.create = (req, res, next) => {
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
-<<<<<<< HEAD
  * { 
  * 	 	"_id": "5a78ae8c0bbf864c4c676bd3",
  * 	 	"text": "Respuesta ",
@@ -111,41 +101,6 @@ exports.create = (req, res, next) => {
  * 	 	"updatedAt": "2018-02-05T19:20:44.320Z",
  * 	 	"__v": 0
  *  }
-=======
- *     {
- *          "_id": "5a63929672e840361145d633",
- *          "text": "Silly questions dont deserve an answer",
- *          "author": {
- *              "_id": "5a63929672e840361145d633",
- *              "firstname": "Ornella",
- *              "lastname": "Ramos",
- *              "email": "ornellar@uninorte.edu.co",
- *              "createdAt": "2018-01-20T19:03:50.638Z",
- *              "updatedAt": "2018-01-20T19:03:50.638Z",
- *              "__v": 0
- *          },
- *          "question": {
- *          "_id": "5a63985872e840361145d634",
- *          "text": "Why the sky is blue?",
- *          "author": {
- *              "_id": "5a63929672e840361145d633",
- *              "firstname": "Ornella",
- *              "lastname": "Ramos",
- *              "email": "ornellar@uninorte.edu.co",
- *              "createdAt": "2018-01-20T19:03:50.638Z",
- *              "updatedAt": "2018-01-20T19:03:50.638Z",
- *              "__v": 0
- *          },
- *          "createdAt": "2018-01-20T19:28:24.046Z",
- *          "updatedAt": "2018-01-20T19:28:24.046Z",
- *          "__v": 0
- *          },
- *          "createdAt": "2018-01-20T19:03:50.638Z",
- *          "updatedAt": "2018-01-20T19:03:50.638Z",
- *          "__v": 0
- *      },
- *
->>>>>>> e18e9024219bbb149249323400a8fed4d4f0b364
  * @apiError Document Not Found the id of the answer was not found.
  *
  * @apiErrorExample Error-Response:
