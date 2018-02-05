@@ -23,9 +23,9 @@ exports.all = (req, res, next) => {
     
     const items = Model
         .find()
+        .sort({createdAt:-1})
         .skip(skip)
         .limit(limit)
-        .sort({createdAt:-1})
         .populate('user');
     
     const count = Model.count();
