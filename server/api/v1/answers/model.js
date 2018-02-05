@@ -8,7 +8,7 @@ const schema = new Schema({
   },
     author: {
     type: Schema.Types.ObjectId,
-    ref: 'author'
+    ref: 'user'
   },
     question: {
     type: Schema.Types.ObjectId,

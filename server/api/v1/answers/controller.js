@@ -26,6 +26,7 @@ exports.all = (req, res, next) => {
         .skip(skip)
         .limit(limit)
         .sort({createdAt:-1})
+        .populate('question')
         .populate('author');
     
     const count = Model.count();

@@ -26,7 +26,7 @@ exports.all = (req, res, next) => {
         .skip(skip)
         .limit(limit)
         .sort({createdAt:-1})
-        .populate('author');
+        .populate('user');
     
     const count = Model.count();
     
@@ -76,21 +76,13 @@ exports.create = (req, res, next) => {
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
- *          "_id": "5a63985872e840361145d634",
- *          "text": "Why the sky is blue?",
- *          "author": {
- *              "_id": "5a63929672e840361145d633",
- *              "firstname": "Ornella",
- *              "lastname": "Ramos",
- *              "email": "ornellar@uninorte.edu.co",
- *              "createdAt": "2018-01-20T19:03:50.638Z",
- *              "updatedAt": "2018-01-20T19:03:50.638Z",
- *              "__v": 0
- *          },
- *          "createdAt": "2018-01-20T19:28:24.046Z",
- *          "updatedAt": "2018-01-20T19:28:24.046Z",
- *          "__v": 0
- *      },
+ *           "_id": "5a77bf88e983d01408d8cc3f",
+ *           "text": "What is the meaning of life?",
+ *            "author": "5a77b95ea33dfd10c6426e4c",
+ *            "createdAt": "2018-02-05T02:20:56.656Z",
+ *            "updatedAt": "2018-02-05T02:20:56.656Z",
+ *            "__v": 0
+ *      }
  *
  * @apiError Document Not Found the id of the Question was not found.
  *
