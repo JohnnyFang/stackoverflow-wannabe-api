@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('./controller');
+const auth = require('./../auth');
 
 /*
  * /api/answers/     GET    - READ ALL

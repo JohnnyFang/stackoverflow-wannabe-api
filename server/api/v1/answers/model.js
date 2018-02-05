@@ -6,16 +6,16 @@ const schema = new Schema({
     type: String,
     required: true
   },
-    author: {
+    user: {
     type: Schema.Types.ObjectId,
-    ref: 'user'
+    ref: 'user',
+    required: true
   },
-    question: {
+    question: [{
     type: Schema.Types.ObjectId,
-    ref: 'question'
-  }
-  
-  
+    ref: 'question',
+    required: true
+  }]
 },{
     timestamps: true
 });

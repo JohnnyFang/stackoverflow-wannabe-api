@@ -23,7 +23,6 @@ exports.all = (req, res, next) => {
     
     const items = Model
         .find()
-        .sort({createdAt:-1})
         .skip(skip)
         .limit(limit)
         .populate('user');
@@ -49,7 +48,7 @@ exports.create = (req, res, next) => {
     
     let document = new Model({
         text: body.text,
-        author: req.decoded._id
+        user: body.user
     });
     document.save()
         .then( doc => {
