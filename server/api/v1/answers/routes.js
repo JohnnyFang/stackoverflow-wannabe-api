@@ -4,11 +4,11 @@ const controller = require('./controller');
 const auth = require('./../auth');
 
 /*
- * /api/questions/     GET    - READ ALL
- * /api/questions/     POST   - CREATE
- * /api/questions/:id  GET    - READ ONE
- * /api/questions/:id  PUT    - UPDATE
- * /api/questions/:id  DELETE - DELETE
+ * /api/answers/     GET    - READ ALL
+ * /api/answers/     POST   - CREATE
+ * /api/answers/:id  GET    - READ ONE
+ * /api/answers/:id  PUT    - UPDATE
+ * /api/answers/:id  DELETE - DELETE
  */
 
 router.route('/')
