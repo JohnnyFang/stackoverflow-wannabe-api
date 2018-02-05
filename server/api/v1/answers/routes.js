@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('./controller');
+const auth = require('./../auth');
 
 /*
  * /api/answers/     GET    - READ ALL
@@ -12,13 +13,13 @@ const controller = require('./controller');
 
 router.route('/')
     .get(controller.all)
-    .post(controller.create)
+    .post(auth, controller.create)
 
 router.param('id', controller.find)
 
 router.route('/:id')
     .get(controller.get)
-    .put(controller.update)
-    .delete(controller.delete)
+    .put(auth,controller.update)
+    .delete(auth,controller.delete)
 
 module.exports = router;
