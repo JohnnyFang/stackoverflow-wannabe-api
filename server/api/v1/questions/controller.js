@@ -25,11 +25,7 @@ exports.all = (req, res, next) => {
         .find()
         .skip(skip)
         .limit(limit)
-<<<<<<< HEAD
         .populate('author');
-=======
-        .populate('user');
->>>>>>> e18e9024219bbb149249323400a8fed4d4f0b364
     
     const count = Model.count();
     
@@ -52,7 +48,7 @@ exports.create = (req, res, next) => {
     
     let document = new Model({
         text: body.text,
-        user: body.user
+        author: req.decoded._id
     });
     document.save()
         .then( doc => {
@@ -77,7 +73,6 @@ exports.create = (req, res, next) => {
  * @apiSuccess {String} updateAt    Last update date of the question.
  *
  * @apiSuccessExample Success-Response:
-<<<<<<< HEAD
  *  HTTP/1.1 200 OK
  *  {
  * 	"_id": "5a7875f6d0e2a02aaf196a1f",
@@ -94,17 +89,6 @@ exports.create = (req, res, next) => {
  * 	"updatedAt": "2018-02-05T15:19:18.702Z",
  * 	"__v": 0
  * }
-=======
- *     HTTP/1.1 200 OK
- *     {
- *           "_id": "5a77bf88e983d01408d8cc3f",
- *           "text": "What is the meaning of life?",
- *            "author": "5a77b95ea33dfd10c6426e4c",
- *            "createdAt": "2018-02-05T02:20:56.656Z",
- *            "updatedAt": "2018-02-05T02:20:56.656Z",
- *            "__v": 0
- *      }
->>>>>>> e18e9024219bbb149249323400a8fed4d4f0b364
  *
  * @apiError Document Not Found the id of the Question was not found.
  *
