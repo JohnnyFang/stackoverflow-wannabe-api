@@ -1,4 +1,5 @@
 const Model = require('./model');
+const questionModel = require("./../questions/model");
 
 exports.find = (req, res, next, id) => {
     Model.findById(id)
@@ -46,15 +47,31 @@ exports.all = (req, res, next) => {
 
 exports.create = (req, res, next) => {
     const body = req.body;
+    const questionId = req.body.question;
     
     let document = new Model(body);
-    document.save()
+    
+    questionModel.findById(questionId)
         .then( doc => {
-            res.json(doc)
+            if(doc){
+                doc.answers.push(document);
+                doc.save();
+                document.save()
+                    .then( doc => {
+                        res.json(doc)
+                    })
+                    .catch( err => {
+                        next(new Error(err));
+                    });
+            }else{
+                res.json({
+                    message: "Question not found"
+                });
+            }
         })
-        .catch( err => {
-            next(new Error(err));
-        });
+    
+        
+    
 };
 
 exports.get = (req, res, next) => {
