@@ -8,7 +8,7 @@ exports.find = (req, res, next, id) => {
                 next();
             }else{
                 res.status(404).json({
-                    message: "Question not found"
+                    message: "Document not found"
                 });
             }
         })
@@ -62,39 +62,37 @@ exports.create = (req, res, next) => {
 };
 
 /**
- * @api {get} /questions/:id Request Book information
+ * @api {get} /questions/:id Request Question information
  * @apiName GetQuestion
  * @apiGroup Question
  *
- * @apiParam {String} id Book unique ID.
+ * @apiParam {String} id Question unique ID.
  *
- * @apiSuccess {String} _id         unique ID of the Book.
- * @apiSuccess {String} text        Title.
- * @apiSuccess {String} description Description.
- * @apiSuccess {String} author      Author of the book.
- * @apiSuccess {String} createdAt   Created date of the book.
- * @apiSuccess {String} updateAt    Last update date of the book.
+ * @apiSuccess {String} _id         unique ID of the question.
+ * @apiSuccess {String} text        Text of the question.
+ * @apiSuccess {String} author      Author of the question.
+ * @apiSuccess {String} createdAt   Created date of the question.
+ * @apiSuccess {String} updateAt    Last update date of the question.
  *
  * @apiSuccessExample Success-Response:
- *     HTTP/1.1 200 OK
- *     {
- *          "_id": "5a63985872e840361145d634",
- *          "title": "Go girl",
- *          "description": "Originally writed by Gillian Flynn",
- *          "author": {
- *              "_id": "5a63929672e840361145d633",
- *              "firstname": "Gustavo",
- *              "lastname": "Morales",
- *              "createdAt": "2018-01-20T19:03:50.638Z",
- *              "updatedAt": "2018-01-20T19:03:50.638Z",
- *              "__v": 0
- *          },
- *          "createdAt": "2018-01-20T19:28:24.046Z",
- *          "updatedAt": "2018-01-20T19:28:24.046Z",
- *          "__v": 0
- *      },
+ *  HTTP/1.1 200 OK
+ *  {
+ * 	"_id": "5a7875f6d0e2a02aaf196a1f",
+ * 	"text": "Test",
+ * 	"author": {
+ * 	  	"firstname": "Ornella",
+ * 	  	"lastname": "Ramos",
+ * 	  	"email": "ornellar2@uninorte.edu.co",
+ * 	  	"createdAt": "2018-02-05T01:54:38.275Z",
+ * 	  	"updatedAt": "2018-02-05T01:54:38.275Z",
+ * 	  	"__v": 0
+ * 	},
+ * 	"createdAt": "2018-02-05T15:19:18.702Z",
+ * 	"updatedAt": "2018-02-05T15:19:18.702Z",
+ * 	"__v": 0
+ * }
  *
- * @apiError Document Not Found the id of the Book was not found.
+ * @apiError Document Not Found the id of the Question was not found.
  *
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 404 Not Found
