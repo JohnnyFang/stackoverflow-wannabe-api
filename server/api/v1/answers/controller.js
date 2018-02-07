@@ -1,5 +1,6 @@
 const Model = require('./model');
 const questionModel = require("./../questions/model");
+const userModel = require("./../users/model");
 
 exports.find = (req, res, next, id) => {
     Model.findById(id)
@@ -50,16 +51,21 @@ exports.create = (req, res, next) => {
     const body = req.body;
     const questionId = req.body.question;
     
-    let document = new Model(body);
+    let sketchAnswer = new Model({
+        text: body.text,
+        author: req.decoded._id,
+        question : body.question
+    });
     
     questionModel.findById(questionId)
-        .then( doc => {
-            if(doc){
-                doc.answers.push(document);
-                doc.save();
-                document.save()
-                    .then( doc => {
-                        res.json(doc)
+        .then( ques => {
+            if(ques){
+                sketchAnswer.save()
+                .then( ans => {
+                        // New answer is pushed onto the question once validations are executed
+                        ques.answers.push(ans);
+                        ques.save()
+                        .then(res.json(ans));
                     })
                     .catch( err => {
                         next(new Error(err));
